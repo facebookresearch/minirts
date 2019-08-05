@@ -1,9 +1,7 @@
-# Hierarchical Decision Making by Generating and Following Natural
-  Language Instructions
+# Hierarchical Decision Making by Generating and Following Natural Language Instructions
 
 This is the repo for paper [Hierarchical Decision Making by Generating
-and Following Natural Language
-Instructions](https://arxiv.org/abs/1906.00744)
+and Following Natural Language Instructions](https://arxiv.org/abs/1906.00744).
 
 ## Dependencies
 We write our model and training code using PyTorch and its C++
@@ -18,7 +16,8 @@ We recommand to use `conda` and follow the instruction
 install PyTorch from source first. Then install dependency for this
 project:
 ```
-conda install numpy tqdm tensorboardx
+conda install lua numpy tqdm
+conda install -c conda-forge tensorboardx
 ```
 
 ## Get Started
@@ -44,24 +43,32 @@ cd pretrained_models
 sh download.sh
 ```
 
-### Visualize dataset We build a visualization tool that works
+### Visualize dataset
+
+We build a visualization tool that works
 directly with json file so that people can get a more intuitive view
 of the dataset and start working on it without compiling the game.
 Please go to the visual folder for detailed instructions on how to use
 it.
 
-### Train models We put the shell scripts that can be used to re-train
-the model with configurations used in the paper in
-`scripts/behavior_clone/scripts`. Simply run command like `sh
-scripts/coach_rnn500.sh` to start training. Note that this command
-needs to be run under `behavior_clone` folder. Normally it will take
-quite a while to load the dataset. For quick testing and debugging,
-one can add `--dev` at the end of the shell script to use the dev
-dataset instead, which contains only 2000 entries and thus much faster
-to load.
+### Train models
 
-### Run matches between models To run matches between trained models,
-we will need to compile the game.  Please see the "Build" and "Set env
+We put the shell scripts that can be used to re-train
+the model with configurations used in the paper in
+`scripts/behavior_clone/scripts`. Simply run command like
+```
+sh scripts/coach_rnn500.sh
+```
+to start training. The command needs to be run under `behavior_clone`
+folder. Normally it will take quite a while to load the dataset. For
+quick testing and debugging, one can add `--dev` at the end of the
+shell script to use the dev dataset instead, which contains only 2000
+entries and thus much faster to load.
+
+### Run matches between models
+
+To run matches between trained models,
+we first need to compile the game.  Please see the "Build" and "Set env
 var" section for details. After the game is compiled, the following
 command can be used to launch matches between an `RNN coach + RNN
 executor` and `zero executor` (the one that does not use latent
@@ -69,8 +76,8 @@ language).
 
 ```
 python match2.py --coach1 rnn500 --executor1 rnn \
-        --coach2 rnn500 --executor2 zero \
-        --num_thread 500 --seed 9999
+	--coach2 rnn500 --executor2 zero \
+	--num_thread 500 --seed 9999
 ```
 
 ## Structure
@@ -102,11 +109,14 @@ various C++ game threads and transfer them between C++ and Python.
 ```
 mkdir build
 cd build
+export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 cmake ..
 make
 ```
 
-## Set Env Variables Note that we need to set the following before
+## Set Env Variables
+
+ Note that we need to set the following before
 running any multi-threading program that uses the C++
 torch::Tensor. Otherwise a simple tensor operation will use all cores
 by default.

@@ -117,7 +117,7 @@ def main():
     options = args['main']
 
     if not os.path.exists(options.model_folder):
-        os.mkdir(options.model_folder)
+        os.makedirs(options.model_folder)
     logger_path = os.path.join(options.model_folder, 'train.log')
     if not options.dev:
         sys.stdout = common_utils.Logger(logger_path)
