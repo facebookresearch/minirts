@@ -41,6 +41,7 @@ To download some pretrained models used in the paper:
 ```
 cd pretrained_models
 sh download.sh
+python update_path.py
 ```
 
 ### Visualize dataset

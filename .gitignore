@@ -10,6 +10,7 @@ data/*
 !data/download.sh
 pretrained_models/*
 !pretrained_models/download.sh
+!pretrained_models/update_path.py
 __pycache__/
 *.ropeproject
 
