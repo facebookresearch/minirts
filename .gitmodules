@@ -1,0 +1,12 @@
+[submodule "third_party/pybind11"]
+	path = third_party/pybind11
+	url = git@github.com:pybind/pybind11.git
+[submodule "third_party/json"]
+	path = third_party/json
+	url = git@github.com:nlohmann/json.git
+[submodule "third_party/websocketpp"]
+	path = third_party/websocketpp
+	url = git@github.com:zaphoyd/websocketpp.git
+[submodule "third_party/concurrentqueue"]
+	path = third_party/concurrentqueue
+	url = git@github.com:cameron314/concurrentqueue.git

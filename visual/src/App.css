@@ -1,0 +1,263 @@
+/*
+Copyright (c) Facebook, Inc. and its affiliates.
+All rights reserved.
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+*/
+.App {
+  margin: 0 auto;
+  background: #f3f7fa;
+  width: 100vw; height: 100vh;
+}
+
+.App.present {
+  background: #0af;
+}
+
+.App .bg-title {
+  font-size: 40px;
+  color: #9ab;
+  font-weight: 900;
+  line-height: 0.85;
+  padding: 20px;
+  user-select: none;
+}
+
+.App.present .bg-title {
+  color: #fff;
+  font-size: 200px;
+}
+
+
+.App .map-container {
+  position: absolute;
+  z-index: 2;
+  top: 40px; bottom: 40px; left: 50%; margin-left: -300px;
+  padding: 20px;
+  width: 800px;
+  background: #fff;
+  box-shadow:  0 0 10px rgba(0,0,0,.3);
+  min-height: 700px;
+}
+
+.App .map-container h3 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 20px 0 5px;
+}
+
+.App .caption_info {
+  color: #789;
+  font-size: 16px;
+}
+
+
+.App .map {
+  display: block;
+  width: 800px;
+  height: 800px;
+}
+
+
+.App .history {
+  position: absolute;
+  left: 25px; top: 300px; bottom: 50px;
+  width: 420px;
+  font-size: 12px;
+  color: rgba(0,0,0,.85);
+  overflow: auto;
+}
+
+.App .history > div {
+  margin-bottom: 10px;
+}
+
+.App.present .history {
+  display: none;
+}
+
+.game_id {
+  font-size: 8px;
+  color: #678;
+
+
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 0.85em;
+  text-align: left;
+  word-wrap: break-word;
+  line-height: 1.65;
+}
+
+.App.present #file_input {
+  border: 2px solid #00f;
+  background: #00f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.App.present #file_input::placeholder {
+  color: #fff;
+}
+
+#file_input {
+  border: 2px solid #123;
+  color: #123;
+  background: #fff;
+}
+
+#file_input::placeholder {
+  color: #9ab;
+}
+
+
+.controls {
+  margin: 25px 0 0 25px;
+}
+
+.controls > div {
+  display: inline-block;
+  height: 40px; line-height: 33px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 5px 20px 0;
+  cursor: pointer;
+  user-select: none;
+  
+}
+
+.controls > .btn {
+  width: 40px;
+  padding: 0;
+  background: #fff;
+  line-height: 40px;
+  border: 2px solid #123;
+  color: #123
+}
+
+.controls > .btn.play_btn {
+  border-color: #00f;
+  color: #00f;
+}
+
+.controls .tickInputFrame {
+  border: 2px solid #123;
+  box-sizing: content-box;
+  padding: 0;
+}
+
+.controls .tickInput {
+  padding: 11px;
+  font-size: 16px;
+  border: none;
+  margin: 0;
+  line-height: 1;
+  outline: none;
+  display: inline-block;
+}
+
+.controls select {
+  height: 40px;
+  margin: 0px 0 0 10px;
+  outline: none;
+}
+
+.controls > .btn:hover {
+  color: #fff;
+  background: #000;
+}
+
+.controls > .btn.play_btn:hover {
+  background: #00f;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.Dropdown-root.picker {
+  line-height: 22px;
+  font-size: 16px;
+  text-align: left;
+  display: inline-block;
+  border: 2px solid #123;
+  margin-right: 5px;
+}
+
+.Dropdown-root.gamepicker.picker {
+  font-size: 16px;
+  display: block;
+  width: 300px;
+}
+
+.Dropdown-root.picker .Dropdown-arrow {
+  top: 17px;
+}
+
+.Dropdown-root.picker .Dropdown-option {
+  text-align: left;
+}
+
+.Dropdown-option {
+  word-break: break-all;
+}
+
+
+
+.autocomplete {
+  display: block;
+  margin: 5px 0 0 25px;
+}
+
+
+
+.autocomplete .loading {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.autocomplete input {
+  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.autocomplete > div {
+  font-size: 14px;
+  width: 400px;
+}
+
+.autocomplete .list-item {
+  padding: 15px;
+  word-break: break-all;
+  line-height: 1;
+  max-width: 400px;
+  user-select: none;
+}
+
+@media only screen and (max-height: 970px) {
+  .App .map-container {
+    top: 0; bottom: 0;
+    padding: 0;
+  }
+
+  .caption {
+    margin: 15px 0 0 15px; 
+  }
+
+  .App .map-container .caption h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+}

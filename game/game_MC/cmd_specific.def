@@ -1,0 +1,11 @@
+CMD_START(1000);
+
+# Generate a game map, with base and resource location.
+CMD_IMMEDIATE(GenerateMap, int, seed, bool, no_terrain);
+
+# Generate some units randomly on the map.
+CMD_IMMEDIATE(GenerateUnit, int, seed, int, resource, int, resource_dist, int, num_resources, bool, fair, int, num_peasants, int, num_extra_units);
+
+# Start the game from a predefined setup. Should be called after
+# GenerateMap and GenerateUnit
+CMD_IMMEDIATE(GameStartSpecific);

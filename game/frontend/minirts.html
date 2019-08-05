@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MiniRTS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div position="relative" style="padding-left: 10px; padding-top: 10px">
+      <div id="canvas_div" style="padding-bottom: 5px;">
+        <canvas id="canvas" style="display: block;"></canvas>
+      </div>
+      <audio id="audio" src="media/door_bell.mp3" crossOrigin="anonymous" preload="auto" style="display: none;"></audio>
+      <div id="input_forms">
+        <form>
+          <div class="form-group">
+            <label id="cmd_hint" style="font-size:16px; color:green; font-weight: bold;" >Please use your imagination to come up with creative orders and strategies. <br> If your partner takes ANY action you didn't order, use the orange button to warn them.</label>
+            <label id="cmd_warn_label" style="font-weight: bold; font-size:16px; color:red; display: none;" >Your partner has marked that you are not following orders! Please only take actions <br> that you have been asked to do. Your task is to follow orders, not to win the game. <br> If you frequently do not follow orders, your work may be rejected!</label>
+            <br>
+            <label id="cmd_input_label" for="cmd_input" style="font-size:20px;" >Enter you instruction here:</label>
+            <textarea class="form-control" rows="2" style="font-size:18px; font-weight: bold; overflow: hidden;" id="cmd_input"></textarea>
+          </div>
+        </form>
+        <form>
+          <div class="form-group">
+            <label for="cmd_history" style="font-size:20px">Log of past orders:</label>
+            <textarea class="form-control" rows="5" style="font-size:16px;" id="cmd_history"></textarea>
+          </div>
+        </form>
+        <div id="issue_btn_div" style="padding-top: 2px; padding-bottom: 2px; padding-right: 2px; float: left; display: none;">
+          <button id="issue_btn" type="button" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Issue Order
+          </button>
+        </div>
+
+        <div id="stop_btn_div" style="padding-top: 2px; padding-bottom: 2px; padding-right: 2px; float: left; display: none;">
+          <button id="stop_btn" type="button" class="btn btn-danger btn-lg">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop Order
+          </button>
+        </div>
+
+        <div id="warn_btn_div" style="padding-top: 2px; padding-bottom: 2px; padding-right: 2px; float: left; display: none;">
+          <button id="warn_btn" type="button" class="btn btn-warning btn-lg">
+            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Warn Player to Follow Orders
+          </button>
+        </div>
+
+        <div id="finish_btn_div" style="padding-top: 2px; padding-bottom: 2px; padding-right: 2px; float: left; display: none;">
+          <button id="finish_btn" type="button" class="btn btn-success btn-lg" >
+            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Finish Order
+          </button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://minirts.net/game/game.js?v=71" type="text/javascript"></script> -->
+    <script src="game.js?v=89" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type = "text/javascript">
+      main();
+    </script>
+</body>
+</html>

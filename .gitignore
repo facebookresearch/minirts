@@ -1,0 +1,37 @@
+# Build and interpreter artifacts
+*.a
+*.bin
+*.dSYM
+*.o
+*.pyc
+*.so
+build/
+data/*
+!data/download.sh
+pretrained_models/*
+!pretrained_models/download.sh
+__pycache__/
+*.ropeproject
+
+# Random junk
+*.sw?
+*.db
+*.json
+*.sgf
+*.swo
+*.tree
+.codemod.bookmark
+.nfs*
+tmp*.sh
+tags
+build/
+save_dir*/
+test-*/
+Testing/
+pachi-*/
+experimental/patterns.prob
+experimental/patterns.spat
+add_header.sh
+copy_right.py
+data2.tgz
+data2/

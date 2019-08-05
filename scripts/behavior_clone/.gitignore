@@ -1,0 +1,13 @@
+srun.sh
+*.pt
+*.log
+saved_models
+sweep_executor/*
+data
+data2
+data3
+model_arxiv
+matches
+sweep_coach
+matches2/
+sweep_match/
