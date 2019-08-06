@@ -77,8 +77,8 @@ language).
 
 ```
 python match2.py --coach1 rnn500 --executor1 rnn \
-	--coach2 rnn500 --executor2 zero \
-	--num_thread 500 --seed 9999
+        --coach2 rnn500 --executor2 zero \
+        --num_thread 500 --seed 9999
 ```
 
 ## Structure
@@ -124,3 +124,10 @@ by default.
 ```
 export OMP_NUM_THREADS=1
 ```
+
+## Copyright
+Copyright (c) Facebook, Inc. and its affiliates.
+All rights reserved.
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
