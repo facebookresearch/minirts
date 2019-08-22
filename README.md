@@ -115,14 +115,35 @@ cmake ..
 make
 ```
 
-## Set Env Variables
-
- Note that we need to set the following before
+Note that we need to set the following before
 running any multi-threading program that uses the C++
 torch::Tensor. Otherwise a simple tensor operation will use all cores
 by default.
 ```
 export OMP_NUM_THREADS=1
+```
+
+## Citation
+If you use this repo in your research, please consider citing the paper as follows:
+```
+@article{DBLP:journals/corr/abs-1906-00744,
+  author    = {Hengyuan Hu and
+               Denis Yarats and
+               Qucheng Gong and
+               Yuandong Tian and
+               Mike Lewis},
+  title     = {Hierarchical Decision Making by Generating and Following Natural Language
+               Instructions},
+  journal   = {CoRR},
+  volume    = {abs/1906.00744},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1906.00744},
+  archivePrefix = {arXiv},
+  eprint    = {1906.00744},
+  timestamp = {Thu, 13 Jun 2019 13:36:00 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1906-00744},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 ```
 
 ## Copyright
