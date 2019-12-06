@@ -15,7 +15,7 @@ We recommand to use `conda` and follow the instruction
 [here](https://github.com/pytorch/pytorch#from-source) to compile and
 install PyTorch from source first. Then install dependency for this
 project:
-```
+```bash
 conda install lua numpy tqdm
 conda install -c conda-forge tensorboardx
 ```
@@ -39,7 +39,7 @@ sh download.sh
 ```
 
 To download some pretrained models used in the paper:
-```
+```bash
 cd pretrained_models
 sh download.sh
 python update_path.py
@@ -136,7 +136,7 @@ the executor.
 We provide a script to install apache without root access. If you have
 root privilege, you can simply run `sudo apt-get update & sudo apt-get
 install apache2`
-```
+```bash
 cd ROOT
 sh install_apache.sh
 ```
@@ -146,7 +146,7 @@ to change the `Listen 80` (line52) to `Listen 8000` or any number >1024. The rea
 that the ports with lower numbers are reserved by system and requires sudo to use them.
 
 Then we need to link our frontend code to the apache root directory & start server
-```
+```bash
 cd ROOT
 ln -s $PWD/game/frontend $PWD/apache/httpd/htdocs/game
 ./bin/apachectl start
@@ -156,8 +156,8 @@ Now open a browser and navigate to `http://localhost:8000/`. You should see `It 
 Otherwise there are some issue with the server set up.
 
 Then we can start a human game!
-```
-cd ROO/scripts/behavior_clone
+```bash
+cd ROOT/scripts/behavior_clone
 python human_coach.py --resource 500 --verbose
 # it should show 'Waiting for websocket client ...'
 ```
