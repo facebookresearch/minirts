@@ -23,7 +23,7 @@ conda install -c conda-forge tensorboardx
 ## Get Started
 
 ### Clone repo
-```
+```bash
 git clone ...
 git submodule sync && git submodule update --init --recursive
 ```
@@ -32,7 +32,8 @@ git submodule sync && git submodule update --init --recursive
 To downalod and unzip the original replays, processed json files, and
 dataset, from the following command. Note that it will take a while
 for the command to finish.
-```
+
+```bash
 cd data
 sh download.sh
 ```
@@ -57,9 +58,11 @@ it.
 We put the shell scripts that can be used to re-train
 the model with configurations used in the paper in
 `scripts/behavior_clone/scripts`. Simply run command like
-```
+
+```bash
 sh scripts/coach_rnn500.sh
 ```
+
 to start training. The command needs to be run under `behavior_clone`
 folder. Normally it will take quite a while to load the dataset. For
 quick testing and debugging, one can add `--dev` at the end of the
@@ -75,7 +78,7 @@ command can be used to launch matches between an `RNN coach + RNN
 executor` and `zero executor` (the one that does not use latent
 language).
 
-```
+```bash
 python match2.py --coach1 rnn500 --executor1 rnn \
         --coach2 rnn500 --executor2 zero \
         --num_thread 500 --seed 9999
@@ -107,7 +110,7 @@ This folder defines a set of infra that dynamically batches data from
 various C++ game threads and transfer them between C++ and Python.
 
 ## Build
-```
+```bash
 mkdir build
 cd build
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
@@ -115,13 +118,57 @@ cmake ..
 make
 ```
 
-Note that we need to set the following before
-running any multi-threading program that uses the C++
-torch::Tensor. Otherwise a simple tensor operation will use all cores
-by default.
-```
+## Set Env Variables
+
+Note that we need to set the following before running any
+multi-threading program that uses the C++ torch::Tensor. Otherwise a
+simple tensor operation will use all cores by default.
+```bash
 export OMP_NUM_THREADS=1
 ```
+
+## Control Executor with Text
+We can control the executor ourselves by inputting text command to the
+trained executor.  First we need to set up the web server for the
+backend so that we can watch the gameplay in browser while controlling
+the executor.
+
+We provide a script to install apache without root access. If you have
+root privilege, you can simply run `sudo apt-get update & sudo apt-get
+install apache2`
+```
+cd ROOT
+sh install_apache.sh
+```
+After installation finishes,
+edit `/private/home/hengyuan/minirts-release/apache/httpd/conf/httpd.conf`
+to change the `Listen 80` (line52) to `Listen 8000` or any number >1024. The reason is
+that the ports with lower numbers are reserved by system and requires sudo to use them.
+
+Then we need to link our frontend code to the apache root directory & start server
+```
+cd ROOT
+ln -s $PWD/game/frontend $PWD/apache/httpd/htdocs/game
+./bin/apachectl start
+```
+
+Now open a browser and navigate to `http://localhost:8000/`. You should see `It Works`.
+Otherwise there are some issue with the server set up.
+
+Then we can start a human game!
+```
+cd ROO/scripts/behavior_clone
+python human_coach.py --resource 500 --verbose
+# it should show 'Waiting for websocket client ...'
+```
+On the browser, navigate to
+`http://localhost:8000/game/minirts.html?player_type=spectator&port=8002`
+and wait for the model to be loaded. The command line will prompt the
+top 500 instructions the model was trained on. If you are using RNN
+executor (by default), you don't have to choose from these
+instructions as the RNN can ideally handle unseen combinations. If you
+are using OneHot executor, you should input an instruction from the
+list.
 
 ## Citation
 If you use this repo in your research, please consider citing the paper as follows:
