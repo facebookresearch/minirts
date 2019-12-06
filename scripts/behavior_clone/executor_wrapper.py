@@ -20,16 +20,16 @@ def format_reply(batch, coach_reply, executor_reply):
 
 
 class ExecutorWrapper(nn.Module):
-    def __init__(self, coach, executor, num_insts, max_raw_chars, cheat, inst_mode):
+    def __init__(self, coach, executor, num_insts, max_raw_chars, cheat):
         super().__init__()
         self.coach = coach
         self.executor = executor
-        assert self.executor.inst_dict._idx2inst == self.coach.inst_dict._idx2inst
+        if coach is not None:
+            assert self.executor.inst_dict._idx2inst == self.coach.inst_dict._idx2inst
 
         self.num_insts = num_insts
         self.max_raw_chars = max_raw_chars
         self.cheat = cheat
-        self.inst_mode = inst_mode
         self.prev_inst = ''
 
     def _get_human_instruction(self, batch):
@@ -74,7 +74,7 @@ class ExecutorWrapper(nn.Module):
                 coach_input = self.coach.format_coach_input(batch)
             word_based = is_word_based(self.executor.args.inst_encoder_type)
             inst, inst_len, inst_cont, coach_reply = self.coach.sample(
-                coach_input, self.inst_mode, word_based)
+                coach_input, word_based)
         else:
             inst, inst_len, inst_cont, coach_reply = self._get_human_instruction(batch)
 

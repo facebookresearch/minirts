@@ -83,8 +83,6 @@ def parse_args():
     parser.add_argument('--max_raw_chars', type=int, default=200)
     parser.add_argument('--verbose', action='store_true')
 
-    parser.add_argument('--inst_mode', type=str, default='full') # can be full/good/better
-
     # game option
     parser.add_argument('--max_tick', type=int, default=int(2e5))
     parser.add_argument('--no_terrain', action='store_true')
@@ -170,7 +168,7 @@ if __name__ == '__main__':
     coach.max_raw_chars = args.max_raw_chars
     executor = Executor.load(args.model_path).to(device)
     executor_wrapper = ExecutorWrapper(
-        coach, executor, coach.num_instructions, args.max_raw_chars, args.cheat, args.inst_mode)
+        coach, executor, coach.num_instructions, args.max_raw_chars, args.cheat)
     executor_wrapper.train(False)
 
     game_option = get_game_option(args)

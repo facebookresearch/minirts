@@ -84,10 +84,19 @@ def parse_args():
     parser.add_argument('--save_replay_per_games', type=int, default=1)
 
     # model
-    from set_path import new_rnn_executor#, best_rnn_executor
-    parser.add_argument('--model_path', type=str, default=new_rnn_executor)
+    parser.add_argument(
+        '--model_path',
+        type=str,
+        default='../../pretrained_models/executor_rnn.pt'
+    )
 
     args = parser.parse_args()
+
+    args.model_path = os.path.abspath(args.model_path)
+    if not os.path.exists(args.model_path):
+        print('cannot find model at:', args.model_path)
+        assert False
+
     return args
 
 
@@ -147,7 +156,7 @@ if __name__ == '__main__':
     for inst  in executor.inst_dict._idx2inst[:500]:
         print(inst)
     executor_wrapper = ExecutorWrapper(
-        None, executor, args.num_instructions, args.max_raw_chars)
+        None, executor, args.num_instructions, args.max_raw_chars, False)
     executor_wrapper.train(False)
 
     context.start()
