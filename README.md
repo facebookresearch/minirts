@@ -141,7 +141,7 @@ cd ROOT
 sh install_apache.sh
 ```
 After installation finishes,
-edit `/private/home/hengyuan/minirts-release/apache/httpd/conf/httpd.conf`
+edit `minirts/apache/httpd/conf/httpd.conf`
 to change the `Listen 80` (line52) to `Listen 8000` or any number >1024. The reason is
 that the ports with lower numbers are reserved by system and requires sudo to use them.
 
