@@ -149,6 +149,7 @@ Then we need to link our frontend code to the apache root directory & start serv
 ```bash
 cd ROOT
 ln -s $PWD/game/frontend $PWD/apache/httpd/htdocs/game
+cd apache/httpd
 ./bin/apachectl start
 ```
 
