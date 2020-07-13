@@ -4,17 +4,6 @@ This is the repo for paper [Hierarchical Decision Making by Generating
 and Following Natural Language Instructions](https://arxiv.org/abs/1906.00744).
 
 ## Dependencies
-We write our model and training code using PyTorch and its C++
-interface. It is a known issue that some strange behaviors can happen
-if the compiler used for compiling this repo is differnet from the
-compiler used by the pre-built PyTorch due to the incompatibility
-between different versions of gcc. Therefore we recommand to **build
-PyTorch from scratch** before compiling this project.
-
-We recommand to use `conda` and follow the instruction
-[here](https://github.com/pytorch/pytorch#from-source) to compile and
-install PyTorch from source first. Then install dependency for this
-project:
 ```bash
 conda install lua numpy tqdm
 conda install -c conda-forge tensorboardx
